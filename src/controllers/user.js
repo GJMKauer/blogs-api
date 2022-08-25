@@ -21,8 +21,17 @@ const getUsers = async (_req, res) => {
   return res.status(200).json(result);
 };
 
+const findUserByPk = async (req, res) => {
+  const { id } = req.params;
+
+  const result = await userService.findUserByPk(id);
+
+  return res.status(200).json(result);
+};
+
 module.exports = {
   login,
   createUser,
   getUsers,
+  findUserByPk,
 };

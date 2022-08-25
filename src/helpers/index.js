@@ -13,6 +13,9 @@ const emailRegex = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
 const notFoundToken = 'Token not found';
 const invalidToken = 'Expired or invalid token';
 
+// User By Pk Validation
+const notFoundUser = 'User does not exist';
+
 module.exports = {
   requiredLoginFields,
   invalidData,
@@ -23,4 +26,5 @@ module.exports = {
   emailRegex,
   notFoundToken,
   invalidToken,
+  notFoundUser,
 };

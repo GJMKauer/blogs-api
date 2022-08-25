@@ -10,6 +10,7 @@ const {
   emailRegex,
   notFoundToken,
   invalidToken,
+  notFoundUser,
 } = require('../helpers/index');
 
 require('dotenv').config();
@@ -74,8 +75,21 @@ const validateToken = async (req, res, next) => {
   next();
 };
 
+const validateUserByPk = async (req, res, next) => {
+  const { id } = req.params;
+
+  const result = await User.findByPk(id);
+
+  if (!result) {
+    return res.status(404).json({ message: notFoundUser });
+  }
+
+  next();
+};
+
 module.exports = {
   validateLogin,
   validateUserCreation,
   validateToken,
+  validateUserByPk,
 };
