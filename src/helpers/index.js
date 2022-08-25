@@ -9,6 +9,10 @@ const shortPassword = '"password" length must be at least 6 characters long';
 const alreadyTakenEmail = 'User already registered';
 const emailRegex = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
 
+// Token Validation
+const notFoundToken = 'Token not found';
+const invalidToken = 'Expired or invalid token';
+
 module.exports = {
   requiredLoginFields,
   invalidData,
@@ -17,4 +21,6 @@ module.exports = {
   shortPassword,
   alreadyTakenEmail,
   emailRegex,
+  notFoundToken,
+  invalidToken,
 };

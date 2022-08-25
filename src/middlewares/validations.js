@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 const { User } = require('../database/models');
 const {
   requiredLoginFields,
@@ -7,7 +8,11 @@ const {
   shortPassword,
   alreadyTakenEmail,
   emailRegex,
+  notFoundToken,
+  invalidToken,
 } = require('../helpers/index');
+
+require('dotenv').config();
 
 const validateLogin = async (req, res, next) => {
   const { email, password } = req.body;
@@ -53,7 +58,24 @@ const validateUserCreation = async (req, res, next) => {
   next();
 };
 
+const validateToken = async (req, res, next) => {
+  try {
+    const { authorization } = req.headers;
+
+    if (!authorization) {
+      return res.status(401).json({ message: notFoundToken });
+    }
+  
+    jwt.verify(authorization, process.env.JWT_SECRET);
+  } catch (error) {
+    return res.status(401).json({ message: invalidToken });
+  }
+  
+  next();
+};
+
 module.exports = {
   validateLogin,
   validateUserCreation,
+  validateToken,
 };
