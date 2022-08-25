@@ -19,5 +19,6 @@ app.post('/user', validateUserCreation, userController.createUser);
 app.get('/user', validateToken, userController.getUsers);
 app.get('/user/:id', validateUserByPk, validateToken, userController.findUserByPk);
 app.post('/categories', validateCategoryCreation, validateToken, categoryController.createCategory);
+app.get('/categories', validateToken, categoryController.getCategories);
 
 module.exports = app;
