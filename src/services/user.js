@@ -15,6 +15,15 @@ const login = async ({ email }) => {
   return token;
 };
 
+const createUser = async ({ displayName, email, password, image }) => {
+  await User.create({ displayName, email, password, image });
+
+  const token = login({ email });
+
+  return token;
+};
+
 module.exports = {
   login,
+  createUser,
 };
