@@ -16,6 +16,9 @@ const invalidToken = 'Expired or invalid token';
 // User By Pk Validation
 const notFoundUser = 'User does not exist';
 
+// Create Categories
+const invalidName = '"name" is required';
+
 module.exports = {
   requiredLoginFields,
   invalidData,
@@ -27,4 +30,5 @@ module.exports = {
   notFoundToken,
   invalidToken,
   notFoundUser,
+  invalidName,
 };

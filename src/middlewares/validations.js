@@ -11,6 +11,7 @@ const {
   notFoundToken,
   invalidToken,
   notFoundUser,
+  invalidName,
 } = require('../helpers/index');
 
 require('dotenv').config();
@@ -87,9 +88,20 @@ const validateUserByPk = async (req, res, next) => {
   next();
 };
 
+const validateCategoryCreation = async (req, res, next) => {
+  const { name } = req.body;
+
+  if (!name) {
+    return res.status(400).json({ message: invalidName });
+  }
+
+  next();
+};
+
 module.exports = {
   validateLogin,
   validateUserCreation,
   validateToken,
   validateUserByPk,
+  validateCategoryCreation,
 };
