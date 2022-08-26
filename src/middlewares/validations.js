@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { User } = require('../database/models');
+const { User, Category } = require('../database/models');
 const {
   requiredLoginFields,
   invalidData,
@@ -12,6 +12,8 @@ const {
   invalidToken,
   notFoundUser,
   invalidName,
+  invalidFields,
+  nonExistentCategory,
 } = require('../helpers/index');
 
 require('dotenv').config();
@@ -98,10 +100,29 @@ const validateCategoryCreation = async (req, res, next) => {
   next();
 };
 
+const validatePostCreation = async (req, res, next) => {
+  const { title, content, categoryIds } = req.body;
+
+  if (!title || !content || !categoryIds) {
+    return res.status(400).json({ message: invalidFields });
+  }
+
+  const { rows } = await Category.findAndCountAll({
+    where: { id: categoryIds },
+  });
+
+  if (!rows.length) {
+    return res.status(400).json({ message: nonExistentCategory });
+  }
+  
+  next();
+};
+
 module.exports = {
   validateLogin,
   validateUserCreation,
   validateToken,
   validateUserByPk,
   validateCategoryCreation,
+  validatePostCreation,
 };

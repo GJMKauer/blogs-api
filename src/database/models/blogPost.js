@@ -21,6 +21,8 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: true,
     },
   }, {
+    createdAt: 'published',
+    updatedAt: 'updated',
     tableName: 'BlogPosts',
   });
 

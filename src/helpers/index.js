@@ -19,6 +19,10 @@ const notFoundUser = 'User does not exist';
 // Create Categories
 const invalidName = '"name" is required';
 
+// Create Post
+const invalidFields = 'Some required fields are missing';
+const nonExistentCategory = '"categoryIds" not found';
+
 module.exports = {
   requiredLoginFields,
   invalidData,
@@ -31,4 +35,6 @@ module.exports = {
   invalidToken,
   notFoundUser,
   invalidName,
+  invalidFields,
+  nonExistentCategory,
 };

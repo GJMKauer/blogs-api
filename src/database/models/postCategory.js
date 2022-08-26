@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: true,
     },
   }, {
+    timestamps: false,
     tableName: 'PostCategories',
   });
 
