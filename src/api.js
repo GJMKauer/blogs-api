@@ -25,6 +25,7 @@ app.get('/user', validateToken, userController.getUsers);
 app.get('/user/:id', validateUserByPk, validateToken, userController.findUserByPk);
 app.post('/categories', validateCategoryCreation, validateToken, categoryController.createCategory);
 app.get('/categories', validateToken, categoryController.getCategories);
+app.get('/post/search', validateToken, postController.searchPost);
 app.post('/post', validateToken, validatePostCreation, postController.createPost);
 app.get('/post', validateToken, postController.getPosts);
 app.get('/post/:id', validateToken, validatePostByPk, postController.findPostByPk);
