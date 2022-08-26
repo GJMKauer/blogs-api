@@ -134,17 +134,23 @@ const validatePostByPk = async (req, res, next) => {
 };
 
 const validatePostUpdate = async (req, res, next) => {
-  const { id } = req.params;
   const { title, content } = req.body;
+
+  if (!title || !content) {
+    return res.status(400).json({ message: invalidFields });
+  }
+
+  next();
+};
+
+const validateAuthorization = async (req, res, next) => {
+  const { id } = req.params;
+
   const { authorization } = req.headers;
 
   const { userId } = await postService.findPostByPk(id);
 
   const tokenVerify = jwt.verify(authorization, process.env.JWT_SECRET);
-
-  if (!title || !content) {
-    return res.status(400).json({ message: invalidFields });
-  }
 
   if (tokenVerify.id !== userId) {
     return res.status(401).json({ message: unauthorizedUser });
@@ -162,4 +168,5 @@ module.exports = {
   validatePostCreation,
   validatePostByPk,
   validatePostUpdate,
+  validateAuthorization,
 };

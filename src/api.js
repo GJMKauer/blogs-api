@@ -12,6 +12,7 @@ const {
   validatePostCreation,
   validatePostByPk,
   validatePostUpdate,
+  validateAuthorization,
 } = require('./middlewares/validations');
 
 const app = express();
@@ -27,6 +28,9 @@ app.get('/categories', validateToken, categoryController.getCategories);
 app.post('/post', validateToken, validatePostCreation, postController.createPost);
 app.get('/post', validateToken, postController.getPosts);
 app.get('/post/:id', validateToken, validatePostByPk, postController.findPostByPk);
-app.put('/post/:id', validateToken, validatePostUpdate, postController.updatePost);
+app.put('/post/:id', validateToken, validatePostUpdate,
+  validateAuthorization, postController.updatePost);
+app.delete('/post/:id', validateToken, validatePostByPk,
+  validateAuthorization, postController.deletePost);
 
 module.exports = app;
