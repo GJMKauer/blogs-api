@@ -29,8 +29,6 @@ const getPosts = async () => {
     }],
   });
 
-  console.log(result.dataValues);
-
   return result;
 };
 
