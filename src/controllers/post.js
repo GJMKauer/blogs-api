@@ -47,9 +47,12 @@ const deletePost = async (req, res) => {
 };
 
 const searchPost = async (req, res) => {
+  const { authorization } = req.headers;
   const { q } = req.query;
 
-  const result = await postService.searchPost(q);
+  const tokenVerify = jwt.verify(authorization, process.env.JWT_SECRET);
+
+  const result = await postService.searchPost(q, tokenVerify.id);
 
   return res.status(200).json(result);
 };
