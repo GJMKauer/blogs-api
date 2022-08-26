@@ -51,8 +51,17 @@ const findPostByPk = async (id) => {
   return result;
 };
 
+const updatePost = async ({ id, title, content }) => {
+  const toBeUpdatedPost = await findPostByPk(id);
+
+  const result = await toBeUpdatedPost.update({ title, content });
+
+  return result;
+};
+
 module.exports = {
   createPost,
   getPosts,
   findPostByPk,
+  updatePost,
 };

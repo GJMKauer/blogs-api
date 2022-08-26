@@ -26,6 +26,9 @@ const nonExistentCategory = '"categoryIds" not found';
 // Post By Pk Validation
 const notFoundPost = 'Post does not exist';
 
+// Update Post
+const unauthorizedUser = 'Unauthorized user';
+
 module.exports = {
   requiredLoginFields,
   invalidData,
@@ -41,4 +44,5 @@ module.exports = {
   invalidFields,
   nonExistentCategory,
   notFoundPost,
+  unauthorizedUser,
 };
