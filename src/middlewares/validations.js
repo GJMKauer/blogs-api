@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { User, Category } = require('../database/models');
+const { User, Category, BlogPost } = require('../database/models');
 const {
   requiredLoginFields,
   invalidData,
@@ -14,6 +14,7 @@ const {
   invalidName,
   invalidFields,
   nonExistentCategory,
+  notFoundPost,
 } = require('../helpers/index');
 
 require('dotenv').config();
@@ -118,6 +119,18 @@ const validatePostCreation = async (req, res, next) => {
   next();
 };
 
+const validatePostByPk = async (req, res, next) => {
+  const { id } = req.params;
+
+  const result = await BlogPost.findByPk(id);
+
+  if (!result) {
+    return res.status(404).json({ message: notFoundPost });
+  }
+
+  next();
+};
+
 module.exports = {
   validateLogin,
   validateUserCreation,
@@ -125,4 +138,5 @@ module.exports = {
   validateUserByPk,
   validateCategoryCreation,
   validatePostCreation,
+  validatePostByPk,
 };

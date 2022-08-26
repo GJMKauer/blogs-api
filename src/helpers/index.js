@@ -23,6 +23,9 @@ const invalidName = '"name" is required';
 const invalidFields = 'Some required fields are missing';
 const nonExistentCategory = '"categoryIds" not found';
 
+// Post By Pk Validation
+const notFoundPost = 'Post does not exist';
+
 module.exports = {
   requiredLoginFields,
   invalidData,
@@ -37,4 +40,5 @@ module.exports = {
   invalidName,
   invalidFields,
   nonExistentCategory,
+  notFoundPost,
 };

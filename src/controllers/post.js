@@ -21,7 +21,16 @@ const getPosts = async (_req, res) => {
   return res.status(200).json(result);
 };
 
+const findPostByPk = async (req, res) => {
+  const { id } = req.params;
+
+  const result = await postService.findPostByPk(id);
+
+  return res.status(200).json(result);
+};
+
 module.exports = {
   createPost,
   getPosts,
+  findPostByPk,
 };

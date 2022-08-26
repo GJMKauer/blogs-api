@@ -10,6 +10,7 @@ const {
   validateUserByPk,
   validateCategoryCreation,
   validatePostCreation,
+  validatePostByPk,
 } = require('./middlewares/validations');
 
 const app = express();
@@ -24,5 +25,6 @@ app.post('/categories', validateCategoryCreation, validateToken, categoryControl
 app.get('/categories', validateToken, categoryController.getCategories);
 app.post('/post', validateToken, validatePostCreation, postController.createPost);
 app.get('/post', validateToken, postController.getPosts);
+app.get('/post/:id', validateToken, validatePostByPk, postController.findPostByPk);
 
 module.exports = app;
