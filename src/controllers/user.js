@@ -1,4 +1,7 @@
+const jwt = require('jsonwebtoken');
 const userService = require('../services/user');
+
+require('dotenv').config();
 
 const login = async (req, res) => {
   const { email } = req.body;
@@ -29,9 +32,20 @@ const findUserByPk = async (req, res) => {
   return res.status(200).json(result);
 };
 
+const deleteYourself = async (req, res) => {
+  const { authorization } = req.headers;
+  
+  const { id } = jwt.verify(authorization, process.env.JWT_SECRET);
+
+  await userService.deleteYourself(id);
+
+  return res.status(204).send();
+};
+
 module.exports = {
   login,
   createUser,
   getUsers,
   findUserByPk,
+  deleteYourself,
 };

@@ -32,5 +32,6 @@ app.put('/post/:id', validateToken, validatePostUpdate,
   validateAuthorization, postController.updatePost);
 app.delete('/post/:id', validateToken, validatePostByPk,
   validateAuthorization, postController.deletePost);
+app.delete('/user/me', validateToken, userController.deleteYourself);
 
 module.exports = app;

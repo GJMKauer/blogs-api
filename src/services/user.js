@@ -39,9 +39,16 @@ const findUserByPk = async (id) => {
   return result;
 };
 
+const deleteYourself = async (id) => {
+  await User.destroy({
+    where: { id },
+  });
+};
+
 module.exports = {
   login,
   createUser,
   getUsers,
   findUserByPk,
+  deleteYourself,
 };
