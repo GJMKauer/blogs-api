@@ -64,7 +64,7 @@ const deletePost = async (id) => {
   });
 };
 
-const searchPost = async (query, userId) => {
+const searchPost = async (query) => {
   const { Op } = Sequelize;
 
   const result = await BlogPost.findAll({
@@ -74,7 +74,6 @@ const searchPost = async (query, userId) => {
     include: [{
       model: User,
       as: 'user',
-      on: { id: userId },
       attributes: {
         exclude: ['password'],
       },
