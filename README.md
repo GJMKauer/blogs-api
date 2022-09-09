@@ -54,7 +54,7 @@ Para rodar o projeto, é necessário executar o comando
 ```
 docker-compose up -d
 ```
-na raíz do projeto. Isso fará com que os containers docker sejam orquestrados e a aplicação esteja disponível. Esse comando deve ser executado via terminal dentro do diretório onde está o arquivo **docker-compose.yml**. Após os containers estarem funcionando, você pode realizar as requisições do CRUD através de algum cliente HTTP, como o Insomnia, o Postman, o HTTPie ou até mesmo extensões como o Thunder Client, do VS Code).
+na raíz do projeto. Isso fará com que os containers docker sejam orquestrados e a aplicação esteja disponível. Esse comando deve ser executado via terminal dentro do diretório onde está o arquivo **docker-compose.yml**. Após os containers estarem funcionando, você pode realizar as requisições do CRUD através de algum cliente HTTP, como o Insomnia, o Postman, o HTTPie ou até mesmo extensões como o Thunder Client, do VS Code.
 
 O projeto trata-se de um desafio para consolidar o aprendizado do modelo de Camadas MSC em conjunto com a utilização do ORM Sequelize, responsável por abstrair toda a lógica de requisição ao banco de dados (no caso, MySQL) com uma sintaxe mais simples e com muitas facilidades. Nesse projeto também fui capaz de utilizar a biblioteca JWT para geração de token de usuário (através de login na API), o que possibilita a autenticação do usuário e validação através desse token, conferindo maior segurança nas transações da API. Isso faz com que o um usuário `X` só possa alterar ou excluir as informações relacionados a esse usuário `X`, recebendo uma mensagem de erro caso tente realizar esse procedimento para alterar, por exemplo, o usuário `Y`.
 
