@@ -106,6 +106,7 @@ Também foi utilizado o conceito de middlewares para validação das requisiçõ
   - A rota retorna o código <code>400</code>, com a mensagem <code>Some required fields are missing</code> caso alguma informação esteja faltando no body da requisição;<br>
   - A rota retorna o código <code>400</code>, com a mensagem <code>Invalid fields</code> caso alguma informação seja inválida no body da requisição.
 </details>
+<br>
 
 ### 👨🏻‍🦱 Users
 | Método | Funcionalidade                             | URL                        |
@@ -144,6 +145,7 @@ Também foi utilizado o conceito de middlewares para validação das requisiçõ
   - A rota retorna o código <code>400</code>, com a mensagem <code>"password" length must be at least 6 characters long</code> caso o campo password tenha menos de 6 caracteres body da requisição;<br>
   - A rota retorna o código <code>409</code>, com a mensagem <code>User already registered</code> caso o usuário já exista no banco de dados.
 </details>
+<br>
 
 ## :warning: Validando token nas requisições
 
@@ -266,6 +268,7 @@ A rota retorna o status 204, <code>sem resposta</code>.
   <summary>A requisição irá falhar nos seguintes casos:</summary>
   - A rota retorna o código <code>400</code>, com a mensagem <code>"name" is required</code> caso o campo name não seja informado no body da requisição.
 </details>
+<br>
 
 ### 📬 Posts
 | Método | Funcionalidade                            | URL                        |
